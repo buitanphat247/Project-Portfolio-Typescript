@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import type { Contact as ContactType } from "../interface/data.interface";
 
 interface ContactProps {
@@ -6,44 +6,6 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ contact }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate API call
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const contactInfo = [
     {
       icon: (
@@ -53,8 +15,8 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
         </svg>
       ),
       label: "Email",
-      value: contact.email,
-      href: `mailto:${contact.email}`,
+      value: "tan270407@gmail.com",
+      href: "mailto:tan270407@gmail.com",
     },
     {
       icon: (
@@ -63,8 +25,8 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
         </svg>
       ),
       label: "Phone",
-      value: contact.phone || "Chưa cập nhật",
-      href: contact.phone ? `tel:${contact.phone}` : undefined,
+      value: "0984380205",
+      href: "tel:0984380205",
     },
     {
       icon: (
@@ -77,7 +39,7 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
         </svg>
       ),
       label: "Location",
-      value: "Hà Nội, Việt Nam",
+      value: "Hồ Chí Minh, Việt Nam",
       href: undefined,
     },
   ];
@@ -85,7 +47,7 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: contact.github,
+      url: "https://github.com/buitanphat247",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -94,7 +56,7 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
     },
     {
       name: "LinkedIn",
-      url: contact.linkedin,
+      url: "https://linkedin.com/in/buitanphat247",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -102,223 +64,128 @@ const Contact: React.FC<ContactProps> = ({ contact }) => {
       ),
     },
     {
-      name: "Twitter",
-      url: contact.twitter,
+      name: "Facebook",
+      url: "https://www.facebook.com/btanphat",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Zalo",
+      url: "https://zalo.me/0984380205",
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10zm-1-6h2v2h-2v-2zm0-8h2v6h-2V8z"/>
         </svg>
       ),
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+    <section
+      id="contact"
+      className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
+    >
+      {/* Mysterious background elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 mb-6">
             Liên hệ với tôi
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
-          <p className="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6 shadow-lg shadow-blue-400/25"></div>
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác
             trong dự án.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-gray-700 p-8 rounded-lg border border-purple-500/20">
-            <h3 className="text-2xl font-semibold text-white mb-6">
-              Gửi tin nhắn
+        <div className="max-w-5xl mx-auto">
+          {/* Contact Information Cards */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold text-slate-200 mb-8 text-center">
+              Thông tin liên hệ
             </h3>
 
-            {submitStatus === "success" && (
-              <div className="mb-6 p-4 bg-green-900/50 border border-green-400 text-green-300 rounded-lg">
-                Cảm ơn bạn! Tin nhắn đã được gửi thành công. Tôi sẽ phản hồi sớm
-                nhất có thể.
-              </div>
-            )}
-
-            {submitStatus === "error" && (
-              <div className="mb-6 p-4 bg-red-900/50 border border-red-400 text-red-300 rounded-lg">
-                Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.
-              </div>
-            )}
-
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              autoComplete="off"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Họ và tên *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    autoComplete="off"
-                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-gray-800 text-white placeholder-gray-400"
-                    placeholder="Nhập họ và tên"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    autoComplete="off"
-                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-gray-800 text-white placeholder-gray-400"
-                    placeholder="Nhập email"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Tiêu đề *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  autoComplete="off"
-                  className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-gray-800 text-white placeholder-gray-400"
-                  placeholder="Nhập tiêu đề"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Nội dung tin nhắn *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  autoComplete="off"
-                  className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none bg-gray-800 text-white placeholder-gray-400"
-                  placeholder="Nhập nội dung tin nhắn..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-purple-400 disabled:to-pink-400 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 cursor-pointer"
-              >
-                {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}
-              </button>
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">
-                Thông tin liên hệ
-              </h3>
-
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <div className="text-white">{info.icon}</div>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-300">{info.label}</p>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          className="text-white font-medium hover:text-purple-300 transition-colors duration-200 cursor-pointer"
-                        >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="group">
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="block p-8 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
+                    >
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-blue-500/40 group-hover:to-cyan-500/40 transition-all duration-500 border border-blue-500/30">
+                          <div className="text-blue-400 group-hover:text-cyan-300 transition-colors duration-500">
+                            {info.icon}
+                          </div>
+                        </div>
+                        <p className="text-sm text-slate-400 mb-3 font-medium uppercase tracking-wide group-hover:text-slate-300 transition-colors duration-300">
+                          {info.label}
+                        </p>
+                        <p className="text-slate-200 font-semibold text-lg group-hover:text-cyan-300 transition-colors duration-500">
                           {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-white font-medium">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Kết nối với tôi
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map(
-                  (social, index) =>
-                    social.url && (
-                      <a
-                        key={index}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-12 h-12 bg-gray-700 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-200 cursor-pointer"
-                        title={social.name}
-                      >
-                        {social.icon}
-                      </a>
-                    )
-                )}
-              </div>
-            </div>
-
-            {/* Working Hours */}
-            <div className="bg-gray-700 p-6 rounded-lg border border-purple-500/20">
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Giờ làm việc
-              </h4>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Thứ 2 - Thứ 6</span>
-                  <span className="font-medium text-white">9:00 - 18:00</span>
+                        </p>
+                      </div>
+                    </a>
+                  ) : (
+                                         <div className="block p-8 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 cursor-pointer hover:border-blue-500/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10">
+                       <div className="text-center">
+                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-blue-500/40 group-hover:to-cyan-500/40 transition-all duration-500 border border-blue-500/30">
+                           <div className="text-blue-400 group-hover:text-cyan-300 transition-colors duration-500">{info.icon}</div>
+                         </div>
+                         <p className="text-sm text-slate-400 mb-3 font-medium uppercase tracking-wide group-hover:text-slate-300 transition-colors duration-300">
+                           {info.label}
+                         </p>
+                         <p className="text-slate-200 font-semibold text-lg group-hover:text-cyan-300 transition-colors duration-500">
+                           {info.value}
+                         </p>
+                       </div>
+                     </div>
+                  )}
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Thứ 7</span>
-                  <span className="font-medium text-white">9:00 - 15:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Chủ nhật</span>
-                  <span className="font-medium text-white">Nghỉ</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+
+          {/* Social Links */}
+          <div className="mb-16">
+            <h4 className="text-2xl font-semibold text-slate-200 mb-8 text-center">
+              Kết nối với tôi
+            </h4>
+
+                         <div className="flex justify-center gap-8">
+               {socialLinks.map(
+                 (social, index) => (
+                   <a
+                     key={index}
+                     href={social.url}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="group p-4 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
+                     title={social.name}
+                   >
+                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center group-hover:from-blue-500/40 group-hover:to-cyan-500/40 transition-all duration-500 border border-blue-500/30">
+                       <div className="text-blue-400 group-hover:text-cyan-300 transition-colors duration-500">
+                         {social.icon}
+                       </div>
+                     </div>
+                   </a>
+                 )
+               )}
+             </div>
+          </div>
+
+       
         </div>
       </div>
     </section>

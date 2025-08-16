@@ -28,6 +28,20 @@
   animation-delay: 4s;
 }
 
+/* Shimmer animation for progress bar */
+@keyframes shimmer {
+  0% { 
+    transform: translateX(-100%); 
+  }
+  100% { 
+    transform: translateX(100%); 
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
 /* Custom scrollbar for mystical theme */
 ::-webkit-scrollbar {
   width: 8px;

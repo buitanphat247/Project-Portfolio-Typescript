@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import SplashScreen from "./components/SplashScreen";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,36 +11,48 @@ import Footer from "./components/Footer";
 import { portfolioData } from "./data/portfolioData";
 
 const App: React.FC = () => {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Header 
-        name={portfolioData.personalInfo.name} 
-        title={portfolioData.personalInfo.title} 
-      />
-      
-      <Hero 
-        name={portfolioData.personalInfo.name}
-        title={portfolioData.personalInfo.title}
-        bio={portfolioData.personalInfo.bio}
-        avatar={portfolioData.personalInfo.avatar}
-        location={portfolioData.personalInfo.location}
-      />
-      
-      <About 
-        bio={portfolioData.personalInfo.bio}
-        personalInfo={portfolioData.personalInfo}
-      />
-      
-      <Skills skills={portfolioData.skills} />
-      
-      <Projects />
-      
-      <Experience experience={portfolioData.experience} />
-      
-      <Contact contact={portfolioData.contact} />
-      
-      <Footer />
-    </div>
+    <>
+      {showSplash ? (
+        <SplashScreen onComplete={handleSplashComplete} />
+      ) : (
+        <div className="min-h-screen bg-gray-900">
+          <Header 
+            name={portfolioData.personalInfo.name} 
+            title={portfolioData.personalInfo.title} 
+          />
+          
+          <Hero 
+            name={portfolioData.personalInfo.name}
+            title={portfolioData.personalInfo.title}
+            bio={portfolioData.personalInfo.bio}
+            avatar={portfolioData.personalInfo.avatar}
+            location={portfolioData.personalInfo.location}
+          />
+          
+          <About 
+            bio={portfolioData.personalInfo.bio}
+            personalInfo={portfolioData.personalInfo}
+          />
+          
+          <Skills skills={portfolioData.skills} />
+          
+          <Projects />
+          
+          <Experience />
+          
+          <Contact contact={portfolioData.contact} />
+          
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
