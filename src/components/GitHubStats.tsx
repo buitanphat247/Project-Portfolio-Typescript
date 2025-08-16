@@ -18,7 +18,6 @@ interface GitHubStatsProps {
   disable_animations?: boolean;
   hide_border?: boolean;
   show_icons?: boolean;
-  theme?: string;
 }
 
 const GitHubStats: React.FC<GitHubStatsProps> = ({
