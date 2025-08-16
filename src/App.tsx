@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -27,27 +28,46 @@ const App: React.FC = () => {
             name={portfolioData.personalInfo.name}
             title={portfolioData.personalInfo.title}
           />
+          
+          <Routes>
+            <Route path="/" element={
+              <>
+                <div id="home">
+                  <Hero
+                    name={portfolioData.personalInfo.name}
+                    title={portfolioData.personalInfo.title}
+                    bio={portfolioData.personalInfo.bio}
+                    avatar={portfolioData.personalInfo.avatar}
+                    location={portfolioData.personalInfo.location}
+                  />
+                </div>
 
-          <Hero
-            name={portfolioData.personalInfo.name}
-            title={portfolioData.personalInfo.title}
-            bio={portfolioData.personalInfo.bio}
-            avatar={portfolioData.personalInfo.avatar}
-            location={portfolioData.personalInfo.location}
-          />
+                <div id="about">
+                  <About
+                    bio={portfolioData.personalInfo.bio}
+                    personalInfo={portfolioData.personalInfo}
+                  />
+                </div>
 
-          <About
-            bio={portfolioData.personalInfo.bio}
-            personalInfo={portfolioData.personalInfo}
-          />
+                <div id="skills">
+                  <Skills skills={portfolioData.skills} />
+                </div>
 
-          <Skills skills={portfolioData.skills} />
+                <div id="projects">
+                  <Projects />
+                </div>
 
-          <Projects />
+                <div id="experience">
+                  <Experience />
+                </div>
 
-          <Experience />
-
-          <Contact contact={portfolioData.contact} />
+                <div id="contact">
+                  <Contact contact={portfolioData.contact} />
+                </div>
+              </>
+            } />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
 
           <Footer />
         </div>

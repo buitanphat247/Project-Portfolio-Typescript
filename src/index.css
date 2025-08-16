@@ -30,16 +30,28 @@
 
 /* Shimmer animation for progress bar */
 @keyframes shimmer {
-  0% { 
-    transform: translateX(-100%); 
+  0% {
+    transform: translateX(-100%);
   }
-  100% { 
-    transform: translateX(100%); 
+  100% {
+    transform: translateX(100%);
   }
 }
 
 .animate-shimmer {
   animation: shimmer 2s infinite;
+}
+
+/* Custom Favicon Styling */
+link[rel="icon"] {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* For browsers that support it */
+link[rel="icon"] img {
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Custom scrollbar for mystical theme */

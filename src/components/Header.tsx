@@ -30,6 +30,7 @@ const Header: React.FC<HeaderProps> = ({ name, title }) => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-md shadow-lg z-50 border-b border-purple-500/30">
       {/* Progress Bar */}
+     
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -54,12 +55,10 @@ const Header: React.FC<HeaderProps> = ({ name, title }) => {
             {navItems.map((item) => (
               <NavLink
                 key={item.id}
-                to={item.id === "home" ? "/" : `/${item.id}`}
+                to="/"
                 onClick={(e) => {
-                  if (item.id === "home") {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }
+                  e.preventDefault();
+                  scrollToSection(item.id);
                 }}
                 className={({ isActive }) => 
                   `text-white hover:text-purple-400 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer relative group ${
