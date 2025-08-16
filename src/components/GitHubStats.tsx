@@ -2,7 +2,7 @@ import React from 'react';
 
 interface GitHubStatsProps {
   username: string;
-  theme?: 'dark' | 'radical' | 'merko' | 'tokyonight' | 'dracula' | 'cobalt' | 'synthwave' | 'highcontrast' | 'dracula' | 'prussian' | 'monokai' | 'vue' | 'vue-dark' | 'shades-of-purple' | 'nightowl' | 'buefy' | 'blue-green' | 'algolia' | 'great-gatsby' | 'darcula' | 'bear' | 'solarized-dark' | 'solarized-light' | 'chartreuse-dark' | 'nord' | 'gotham' | 'material-palenight' | 'graywhite' | 'vision-friendly-dark' | 'ayu-mirage' | 'midnight-purple' | 'calm' | 'flag-india' | 'omni' | 'react-dark' | 'night' | 'coffee' | 'synthwave-84' | 'holi' | 'ayu-light' | 'devsarah' | 'barbie' | 'back-to-the-future' | 'outrun' | 'ocean-dark' | 'city-lights' | 'bluloco-dark' | 'bluloco-light' | 'ubuntu' | 'discord_old_blurple' | 'aura_dark';
+  theme?: 'dark' | 'radical' | 'merko' | 'tokyonight' | 'dracula' | 'cobalt' | 'synthwave' | 'highcontrast' | 'prussian' | 'monokai' | 'vue' | 'vue-dark' | 'shades-of-purple' | 'nightowl' | 'buefy' | 'blue-green' | 'algolia' | 'great-gatsby' | 'darcula' | 'bear' | 'solarized-dark' | 'solarized-light' | 'chartreuse-dark' | 'nord' | 'gotham' | 'material-palenight' | 'graywhite' | 'vision-friendly-dark' | 'ayu-mirage' | 'midnight-purple' | 'calm' | 'flag-india' | 'omni' | 'react-dark' | 'night' | 'coffee' | 'synthwave-84' | 'holi' | 'ayu-light' | 'devsarah' | 'barbie' | 'back-to-the-future' | 'outrun' | 'ocean-dark' | 'city-lights' | 'bluloco-dark' | 'bluloco-light' | 'ubuntu' | 'discord_old_blurple' | 'aura_dark';
   hide?: 'stars' | 'commits' | 'prs' | 'issues' | 'contribs';
   count_private?: boolean;
   include_all_commits?: boolean;
