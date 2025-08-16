@@ -48,12 +48,29 @@ src/
    npm install
    ```
 
-3. **Chạy development server**
+3. **Cấu hình Environment Variables**
+   
+   Tạo file `.env.local` trong thư mục gốc:
+   ```env
+   # GitHub Configuration
+   VITE_GITHUB_TOKEN=your_github_token_here
+   VITE_GITHUB_USERNAME=your_github_username_here
+   ```
+
+   **Cách lấy GitHub Token:**
+   1. Vào [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens)
+   2. Click "Generate new token (classic)"
+   3. Đặt tên (ví dụ: "Portfolio App")
+   4. Chọn scopes: `public_repo`, `read:user`, `read:email`
+   5. Copy token và paste vào file `.env.local`
+
+
+4. **Chạy development server**
    ```bash
    npm run dev
    ```
 
-4. **Build cho production**
+5. **Build cho production**
    ```bash
    npm run build
    ```

@@ -32,7 +32,7 @@ const App: React.FC = () => {
       
       <Skills skills={portfolioData.skills} />
       
-      <Projects projects={portfolioData.projects} />
+      <Projects />
       
       <Experience experience={portfolioData.experience} />
       

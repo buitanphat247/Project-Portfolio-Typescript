@@ -93,7 +93,7 @@ export const portfolioData: PortfolioData = {
       id: 1,
       title: "Monkey-Blogging",
       description: "Hệ thống blog hiện đại với giao diện đẹp mắt và tính năng quản lý nội dung chuyên nghiệp.",
-      image: "https://via.placeholder.com/400x300/6366F1/FFFFFF?text=Monkey+Blogging",
+      image: "", // Bạn có thể thay đổi đường dẫn ảnh ở đây
       technologies: ["JavaScript", "React", "Node.js", "MongoDB"],
       githubUrl: "https://github.com/buitanphat247/Monkey-Blogging",
       liveUrl: "https://monkey-blogging.vercel.app"
@@ -102,7 +102,7 @@ export const portfolioData: PortfolioData = {
       id: 2,
       title: "Project-Giao-Duc-Dia-Phuong-By-React",
       description: "Website giáo dục địa phương cung cấp tài liệu học tập, khóa học trực tuyến và tin tức giáo dục để nâng cao kiến thức và kỹ năng từ mầm non đến đại học.",
-      image: "https://via.placeholder.com/400x300/8B5CF6/FFFFFF?text=Education+Local",
+      image: "",
       technologies: ["JavaScript", "React", "TailwindCSS", "Node.js"],
       githubUrl: "https://github.com/buitanphat247/Project-Giao-Duc-Dia-Phuong-By-React",
       liveUrl: "https://education-local.vercel.app"
@@ -111,7 +111,7 @@ export const portfolioData: PortfolioData = {
       id: 3,
       title: "C-Algorithm",
       description: "Thư viện thuật toán và cấu trúc dữ liệu được viết bằng C++ với các giải pháp tối ưu.",
-      image: "https://via.placeholder.com/400x300/EC4899/FFFFFF?text=C+Algorithm",
+      image: "",
       technologies: ["C++", "Algorithms", "Data Structures"],
       githubUrl: "https://github.com/buitanphat247/C-Algorithm",
       liveUrl: undefined
@@ -120,7 +120,7 @@ export const portfolioData: PortfolioData = {
       id: 4,
       title: "Project-Movie-Galaxy-By-React",
       description: "Movies Galaxy là website xem phim trực tuyến miễn phí với chất lượng cao và giao diện trực quan, mang đến trải nghiệm người dùng tuyệt vời.",
-      image: "https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Movie+Galaxy",
+      image: "",
       technologies: ["JavaScript", "React", "API", "CSS3"],
       githubUrl: "https://github.com/buitanphat247/Project-Movie-Galaxy-By-React",
       liveUrl: "https://movie-galaxy.vercel.app"
@@ -129,7 +129,7 @@ export const portfolioData: PortfolioData = {
       id: 5,
       title: "Course-Backend-Api-By-NodeJs-ExpressJs",
       description: "Học BackEnd NodeJs, Express JS, MongoDB, MySQL cùng tôi - Khóa học toàn diện về phát triển backend.",
-      image: "https://via.placeholder.com/400x300/10B981/FFFFFF?text=Backend+Course",
+      image: "",
       technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB", "MySQL"],
       githubUrl: "https://github.com/buitanphat247/Course-Backend-Api-By-NodeJs-ExpressJs",
       liveUrl: "https://backend-course.vercel.app"
@@ -138,7 +138,7 @@ export const portfolioData: PortfolioData = {
       id: 6,
       title: "Portfolio Website",
       description: "Website portfolio responsive với thiết kế huyền bí và tối ưu SEO.",
-      image: "https://via.placeholder.com/400x300/EF4444/FFFFFF?text=Portfolio",
+      image: "",
       technologies: ["React", "TypeScript", "TailwindCSS", "Vite"],
       githubUrl: "https://github.com/buitanphat247",
       liveUrl: "https://buitanphat247.github.io"
