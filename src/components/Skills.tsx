@@ -39,98 +39,58 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
   };
 
   const getSkillIcon = (skillName: string) => {
-    const skillIcons: { [key: string]: string } = {
+    // Lấy chữ cái đầu tiên của skill name
+    const firstLetter = skillName.charAt(0).toUpperCase();
+    
+    // Tạo gradient colors dựa trên category
+    const getGradientColors = (skillName: string) => {
+      const name = skillName.toLowerCase();
+      
       // Frontend
-      'HTML5': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-      'CSS3': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-      'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      'React': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'Vue.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
-      'Next.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-      'TailwindCSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
-      'Bootstrap': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
-      'MUI': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg',
-      'SASS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
-      'LESS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/less/less-plain-wordmark.svg',
-      'Windicss': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windicss/windicss-original.svg',
-      'Redux': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
-      'React Router': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg',
-      'React Query': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactquery/reactquery-original.svg',
-      'Ant Design': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/antdesign/antdesign-original.svg',
+      if (name.includes('html') || name.includes('css') || name.includes('javascript') || 
+          name.includes('typescript') || name.includes('react') || name.includes('vue') || 
+          name.includes('next') || name.includes('tailwind') || name.includes('bootstrap') ||
+          name.includes('mui') || name.includes('sass') || name.includes('less') ||
+          name.includes('redux') || name.includes('router') || name.includes('query') ||
+          name.includes('ant design')) {
+        return 'from-blue-500 to-purple-600';
+      }
       
       // Backend
-      'NodeJS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      'Express.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
-      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-      'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-      'Spring Boot': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-      'Nodemon': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodemon/nodemon-original.svg',
-      'Context API': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-      'C': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
-      'Data Structures': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      'Algorithms': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      'Competitive Programming': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+      if (name.includes('node') || name.includes('express') || name.includes('python') ||
+          name.includes('php') || name.includes('java') || name.includes('spring') ||
+          name.includes('c++') || name.includes('c#') || name.includes('c ') ||
+          name.includes('data') || name.includes('algorithm') || name.includes('competitive')) {
+        return 'from-green-500 to-teal-600';
+      }
       
       // Database
-      'MongoDB': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-      'MySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-      'Microsoft SQL Server': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
-      'SQLite': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg',
-      
-      // Mobile & IoT
-      'React Native': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'Node-RED': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      'Arduino': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg',
+      if (name.includes('mongo') || name.includes('mysql') || name.includes('sql') ||
+          name.includes('postgres') || name.includes('redis')) {
+        return 'from-orange-500 to-red-600';
+      }
       
       // DevOps & Hosting
-      'Vercel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
-      'Heroku': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg',
-      'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
-      'Google Cloud': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
-      'Cloudflare': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg',
-      'GitHub Pages': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-      'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+      if (name.includes('vercel') || name.includes('heroku') || name.includes('firebase') ||
+          name.includes('aws') || name.includes('docker') || name.includes('git') ||
+          name.includes('github') || name.includes('gitlab')) {
+        return 'from-indigo-500 to-blue-600';
+      }
       
       // UI/Design
-      'Figma': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-      'Canva': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg',
-      'Dribbble': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dribbble/dribbble-original.svg',
-      'Adobe Photoshop': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg',
-      'Adobe Illustrator': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg',
-      'Adobe InDesign': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/indesign/indesign-plain.svg',
-      'Adobe Premiere Pro': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg',
-      'Adobe After Effects': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-plain.svg',
-      'Adobe Dreamweaver': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dreamweaver/dreamweaver-plain.svg',
+      if (name.includes('figma') || name.includes('canva') || name.includes('dribbble') ||
+          name.includes('photoshop') || name.includes('illustrator') || name.includes('adobe')) {
+        return 'from-pink-500 to-rose-600';
+      }
       
-      // Tools & Others
-      'Git': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-      'GitHub': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-      'GitLab': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg',
-      'GitLab CI': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg',
-      'Postman': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
-      'ESLint': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg',
-      'Yarn': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg',
-      'Markdown': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg',
-      'Portfolio': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'Babel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/babel/babel-original.svg',
+      // Default gradient
+      return 'from-purple-500 to-pink-600';
     };
     
-    // Fallback icons for common skills that might not have specific icons
-    const fallbackIcons: { [key: string]: string } = {
-      'AWS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
-      'Netlify': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg',
-      'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-      'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      'Laravel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg',
-      'Django': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
-      'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
-      '.NET': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg',
+    return {
+      letter: firstLetter,
+      gradient: getGradientColors(skillName)
     };
-    
-    return skillIcons[skillName] || fallbackIcons[skillName] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg';
   };
 
   const groupedSkills = skills.reduce((acc, skill) => {
@@ -219,24 +179,19 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
                     key={skill.id} 
                     className="group relative bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-600/30 rounded-xl p-4 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer transform hover:scale-105"
                   >
-                                         {/* Skill Icon */}
-                     <div className="flex items-center justify-center mb-3">
-                       <img 
-                         src={getSkillIcon(skill.name)} 
-                         alt={skill.name}
-                         className="w-8 h-8 object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                         onError={(e) => {
-                           const target = e.target as HTMLImageElement;
-                           target.style.display = 'none';
-                           target.nextElementSibling?.classList.remove('hidden');
-                         }}
-                       />
-                       <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center hidden">
-                         <span className="text-white text-xs font-bold">
-                           {skill.name.charAt(0).toUpperCase()}
-                         </span>
-                       </div>
-                     </div>
+                                                               {/* Skill Icon */}
+                      <div className="flex items-center justify-center mb-3">
+                        {(() => {
+                          const iconData = getSkillIcon(skill.name);
+                          return (
+                            <div className={`w-8 h-8 bg-gradient-to-br ${iconData.gradient} rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                              <span className="text-white text-xs font-bold">
+                                {iconData.letter}
+                              </span>
+                            </div>
+                          );
+                        })()}
+                      </div>
 
                     {/* Skill Name */}
                     <h4 className="text-sm font-semibold text-white text-center mb-3 group-hover:text-purple-300 transition-colors duration-300">
