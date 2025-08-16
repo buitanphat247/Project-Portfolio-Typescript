@@ -19,39 +19,35 @@ const App: React.FC = () => {
 
   return (
     <>
-      {showSplash ? (
-        <SplashScreen onComplete={handleSplashComplete} />
-      ) : (
-        <div className="min-h-screen bg-gray-900">
-          <Header 
-            name={portfolioData.personalInfo.name} 
-            title={portfolioData.personalInfo.title} 
-          />
-          
-          <Hero 
-            name={portfolioData.personalInfo.name}
-            title={portfolioData.personalInfo.title}
-            bio={portfolioData.personalInfo.bio}
-            avatar={portfolioData.personalInfo.avatar}
-            location={portfolioData.personalInfo.location}
-          />
-          
-          <About 
-            bio={portfolioData.personalInfo.bio}
-            personalInfo={portfolioData.personalInfo}
-          />
-          
-          <Skills skills={portfolioData.skills} />
-          
-          <Projects />
-          
-          <Experience />
-          
-          <Contact contact={portfolioData.contact} />
-          
-          <Footer />
-        </div>
-      )}
+      <div className="min-h-screen bg-gray-900">
+        <Header
+          name={portfolioData.personalInfo.name}
+          title={portfolioData.personalInfo.title}
+        />
+
+        <Hero
+          name={portfolioData.personalInfo.name}
+          title={portfolioData.personalInfo.title}
+          bio={portfolioData.personalInfo.bio}
+          avatar={portfolioData.personalInfo.avatar}
+          location={portfolioData.personalInfo.location}
+        />
+
+        <About
+          bio={portfolioData.personalInfo.bio}
+          personalInfo={portfolioData.personalInfo}
+        />
+
+        <Skills skills={portfolioData.skills} />
+
+        <Projects />
+
+        <Experience />
+
+        <Contact contact={portfolioData.contact} />
+
+        <Footer />
+      </div>
     </>
   );
 };
