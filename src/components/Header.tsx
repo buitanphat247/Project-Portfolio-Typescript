@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import ProgressBar from "react-scroll-progress-bar"; //Add this line to import the component
+import { NavLink } from "react-router-dom";
+import ProgressBar from "react-scroll-progress-bar";
 
 interface HeaderProps {
   name: string;
@@ -51,15 +52,24 @@ const Header: React.FC<HeaderProps> = ({ name, title }) => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
             {navItems.map((item) => (
-              <button
+              <NavLink
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className=" !text-white hover:text-purple-400 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer relative group"
-                style={{ color: "white" }}
+                to={item.id === "home" ? "/" : `/${item.id}`}
+                onClick={(e) => {
+                  if (item.id === "home") {
+                    e.preventDefault();
+                    scrollToSection(item.id);
+                  }
+                }}
+                className={({ isActive }) => 
+                  `text-white hover:text-purple-400 px-3 py-2 text-sm font-medium transition-all duration-200 cursor-pointer relative group ${
+                    isActive ? 'text-purple-400' : ''
+                  }`
+                }
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-200 group-hover:w-full"></span>
-              </button>
+              </NavLink>
             ))}
           </nav>
 
