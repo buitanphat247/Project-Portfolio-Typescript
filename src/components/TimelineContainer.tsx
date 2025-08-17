@@ -18,10 +18,11 @@ interface TimelineContainerProps {
 const TimelineContainer: React.FC<TimelineContainerProps> = ({ projects }) => {
   return (
     <div className="relative">
-      {/* Timeline Line */}
-      <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500"></div>
+      {/* Timeline Line - Hidden on mobile, visible on md+ */}
+      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500"></div>
 
-      <div className="space-y-12">
+      {/* Mobile: Simple card layout, Desktop: Timeline layout */}
+      <div className="md:space-y-12 space-y-6">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

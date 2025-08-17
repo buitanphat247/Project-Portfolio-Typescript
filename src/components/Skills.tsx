@@ -18,6 +18,8 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
         return 'text-indigo-400';
       case 'tools':
         return 'text-violet-400';
+      case 'office':
+        return 'text-emerald-400';
       default:
         return 'text-gray-400';
     }
@@ -33,6 +35,8 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
         return 'Database';
       case 'tools':
         return 'Tools';
+      case 'office':
+        return 'Office & Productivity';
       default:
         return category;
     }
@@ -79,8 +83,19 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
       
       // UI/Design
       if (name.includes('figma') || name.includes('canva') || name.includes('dribbble') ||
-          name.includes('photoshop') || name.includes('illustrator') || name.includes('adobe')) {
+          name.includes('photoshop') || name.includes('illustrator') || name.includes('adobe') ||
+          name.includes('capcut')) {
         return 'from-pink-500 to-rose-600';
+      }
+      
+      // Office & Productivity
+      if (name.includes('word') || name.includes('excel') || name.includes('powerpoint') ||
+          name.includes('access') || name.includes('google') || name.includes('docs') ||
+          name.includes('sheets') || name.includes('slides') || name.includes('libre') ||
+          name.includes('notion') || name.includes('trello') || name.includes('asana') ||
+          name.includes('slack') || name.includes('discord') || name.includes('zoom') ||
+          name.includes('teams')) {
+        return 'from-emerald-500 to-teal-600';
       }
       
       // Default gradient
@@ -100,6 +115,14 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
     acc[skill.category].push(skill);
     return acc;
   }, {} as Record<string, Skill[]>);
+
+  // Sắp xếp thứ tự categories
+  const categoryOrder = ['frontend', 'backend', 'database', 'tools', 'office'];
+  const sortedCategories = Object.keys(groupedSkills).sort((a, b) => {
+    const aIndex = categoryOrder.indexOf(a);
+    const bIndex = categoryOrder.indexOf(b);
+    return aIndex - bIndex;
+  });
 
     return (
     <section id="skills" className="py-20 bg-gray-900">
@@ -157,29 +180,31 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
           ]}
         />
 
-        {/* Modern Skills Grid */}
+                {/* Modern Skills Grid */}
         <div className="space-y-12">
-          {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-            <div key={category} className="relative">
-              {/* Category Header */}
-              <div className="flex items-center mb-8">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mr-4 flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
+          {sortedCategories.map((category) => {
+            const categorySkills = groupedSkills[category];
+            return (
+              <div key={category} className="relative">
+                {/* Category Header */}
+                <div className="flex items-center mb-8">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mr-4 flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {getCategoryLabel(category)}
+                  </h3>
+                  <div className="ml-4 flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
                 </div>
-                <h3 className="text-2xl font-bold text-white">
-                  {getCategoryLabel(category)}
-                </h3>
-                <div className="ml-4 flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
-              </div>
 
-              {/* Skills Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {categorySkills.map((skill) => (
-                  <div 
-                    key={skill.id} 
-                    className="group relative bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-600/30 rounded-xl p-4 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer transform hover:scale-105"
-                  >
-                                                               {/* Skill Icon */}
+                {/* Skills Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                  {categorySkills.map((skill) => (
+                    <div 
+                      key={skill.id} 
+                      className="group relative bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-600/30 rounded-xl p-4 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer transform hover:scale-105"
+                    >
+                      {/* Skill Icon */}
                       <div className="flex items-center justify-center mb-3">
                         {(() => {
                           const iconData = getSkillIcon(skill.name);
@@ -193,39 +218,40 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
                         })()}
                       </div>
 
-                    {/* Skill Name */}
-                    <h4 className="text-sm font-semibold text-white text-center mb-3 group-hover:text-purple-300 transition-colors duration-300">
-                      {skill.name}
-                    </h4>
+                      {/* Skill Name */}
+                      <h4 className="text-sm font-semibold text-white text-center mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                        {skill.name}
+                      </h4>
 
-                    {/* Skill Level Indicator */}
-                    <div className="flex justify-center space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={i}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            i < Math.floor(skill.level / 20) 
-                              ? 'bg-gradient-to-r from-purple-400 to-pink-400 shadow-sm shadow-purple-500/50' 
-                              : 'bg-gray-600 group-hover:bg-gray-500'
-                          }`}
-                        ></div>
-                      ))}
+                      {/* Skill Level Indicator */}
+                      <div className="flex justify-center space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <div
+                            key={i}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                              i < Math.floor(skill.level / 20) 
+                                ? 'bg-gradient-to-r from-purple-400 to-pink-400 shadow-sm shadow-purple-500/50' 
+                                : 'bg-gray-600 group-hover:bg-gray-500'
+                            }`}
+                          ></div>
+                        ))}
+                      </div>
+
+                      {/* Skill Level Text */}
+                      <div className="text-center mt-2">
+                        <span className="text-xs text-gray-400 font-medium">
+                          {skill.level}%
+                        </span>
+                      </div>
+
+                      {/* Hover Effect Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
-
-                    {/* Skill Level Text */}
-                    <div className="text-center mt-2">
-                      <span className="text-xs text-gray-400 font-medium">
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    {/* Hover Effect Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Skills Overview */}

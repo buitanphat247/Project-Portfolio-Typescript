@@ -57,10 +57,10 @@ export const portfolioData: PortfolioData = {
     { id: 37, name: "GitHub Pages", level: 85, category: "tools" },
     { id: 38, name: "Docker", level: 70, category: "tools" },
 
-    // UI/Design
+    // UI/Design & Office Tools
     { id: 39, name: "Figma", level: 75, category: "tools" },
     { id: 40, name: "Canva", level: 80, category: "tools" },
-    { id: 41, name: "Dribbble", level: 70, category: "tools" },
+    { id: 41, name: "CapCut", level: 75, category: "tools" },
     { id: 42, name: "Adobe Photoshop", level: 65, category: "tools" },
     { id: 43, name: "Adobe Illustrator", level: 60, category: "tools" },
     { id: 44, name: "Adobe InDesign", level: 55, category: "tools" },
@@ -68,25 +68,42 @@ export const portfolioData: PortfolioData = {
     { id: 46, name: "Adobe After Effects", level: 55, category: "tools" },
     { id: 47, name: "Adobe Dreamweaver", level: 70, category: "tools" },
 
+    // Office & Productivity
+    { id: 48, name: "Microsoft Word", level: 90, category: "office" },
+    { id: 49, name: "Microsoft Excel", level: 85, category: "office" },
+    { id: 50, name: "Microsoft PowerPoint", level: 80, category: "office" },
+    { id: 51, name: "Microsoft Access", level: 70, category: "office" },
+    { id: 52, name: "Google Docs", level: 85, category: "office" },
+    { id: 53, name: "Google Sheets", level: 80, category: "office" },
+    { id: 54, name: "Google Slides", level: 75, category: "office" },
+    { id: 55, name: "LibreOffice", level: 75, category: "office" },
+    { id: 56, name: "Notion", level: 80, category: "office" },
+    { id: 57, name: "Trello", level: 85, category: "office" },
+    { id: 58, name: "Asana", level: 75, category: "office" },
+    { id: 59, name: "Slack", level: 80, category: "office" },
+    { id: 60, name: "Discord", level: 85, category: "office" },
+    { id: 61, name: "Zoom", level: 80, category: "office" },
+    { id: 62, name: "Microsoft Teams", level: 75, category: "office" },
+
     // Tools & Others
-    { id: 48, name: "Git", level: 90, category: "tools" },
-    { id: 49, name: "GitHub", level: 90, category: "tools" },
-    { id: 50, name: "GitLab", level: 80, category: "tools" },
-    { id: 51, name: "GitLab CI", level: 75, category: "tools" },
-    { id: 52, name: "Postman", level: 85, category: "tools" },
-    { id: 53, name: "ESLint", level: 80, category: "tools" },
-    { id: 54, name: "Yarn", level: 85, category: "tools" },
-    { id: 55, name: "Markdown", level: 90, category: "tools" },
-    { id: 56, name: "Portfolio", level: 85, category: "tools" },
-    { id: 57, name: "Babel", level: 75, category: "tools" },
+    { id: 63, name: "Git", level: 90, category: "tools" },
+    { id: 64, name: "GitHub", level: 90, category: "tools" },
+    { id: 65, name: "GitLab", level: 80, category: "tools" },
+    { id: 66, name: "GitLab CI", level: 75, category: "tools" },
+    { id: 67, name: "Postman", level: 85, category: "tools" },
+    { id: 68, name: "ESLint", level: 80, category: "tools" },
+    { id: 69, name: "Yarn", level: 85, category: "tools" },
+    { id: 70, name: "Markdown", level: 90, category: "tools" },
+    { id: 71, name: "Portfolio", level: 85, category: "tools" },
+    { id: 72, name: "Babel", level: 75, category: "tools" },
 
     // Algorithms & Competitive Programming
-    { id: 58, name: "Python", level: 85, category: "backend" },
-    { id: 59, name: "C++", level: 80, category: "backend" },
-    { id: 60, name: "C", level: 75, category: "backend" },
-    { id: 61, name: "Data Structures", level: 85, category: "backend" },
-    { id: 62, name: "Algorithms", level: 85, category: "backend" },
-    { id: 63, name: "Competitive Programming", level: 80, category: "backend" },
+    { id: 73, name: "Python", level: 85, category: "backend" },
+    { id: 74, name: "C++", level: 80, category: "backend" },
+    { id: 75, name: "C", level: 75, category: "backend" },
+    { id: 76, name: "Data Structures", level: 85, category: "backend" },
+    { id: 77, name: "Algorithms", level: 85, category: "backend" },
+    { id: 78, name: "Competitive Programming", level: 80, category: "backend" },
   ],
   projects: [
     {
@@ -155,38 +172,81 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      id: 1,
-      company: "Freelance Developer",
-      position: "Full Stack Developer",
-      duration: "2023 - Hiện tại",
+      id: 2,
+      company: "Gia sư Tin học",
+      position: "Giáo viên dạy kèm",
+      duration: "2022 - 2023",
       description:
-        "Phát triển các ứng dụng web và mobile cho khách hàng. Tối ưu hóa hiệu suất và kiến trúc hệ thống. Làm việc với nhiều công nghệ khác nhau.",
+        "Dạy học sinh lớp 9 ôn thi vào lớp 10 chuyên Tin – Trường THPT Chuyên Lê Quý Đôn. Hướng dẫn lập trình cơ bản và thuật toán.",
       technologies: [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "TypeScript",
-        "TailwindCSS",
+        "C++",
+        "Python",
+        "Algorithms",
+        "Data Structures",
+        "Teaching",
       ],
     },
     {
-      id: 2,
-      company: "Student Projects",
-      position: "Lead Developer",
+      id: 3,
+      company: "Gia sư Toán",
+      position: "Giáo viên dạy kèm",
       duration: "2022 - 2023",
       description:
-        "Lãnh đạo team phát triển các dự án học tập. Áp dụng kiến thức về thuật toán và cấu trúc dữ liệu vào thực tế.",
-      technologies: ["JavaScript", "React", "C++", "Python", "Git"],
+        "Dạy kèm môn Toán cho học sinh cấp 2 và cấp 3. Ôn thi vào lớp 10 và đại học. Phát triển tư duy logic và kỹ năng giải toán.",
+      technologies: ["Mathematics", "Problem Solving", "Teaching", "Logic"],
     },
     {
-      id: 3,
-      company: "Personal Projects",
-      position: "Solo Developer",
+      id: 4,
+      company: "Gia sư Vật lí",
+      position: "Giáo viên dạy kèm",
+      duration: "2022 - 2023",
+      description:
+        "Dạy kèm môn Vật lí cho học sinh THPT. Ôn thi đại học và giải thích các khái niệm vật lí phức tạp một cách dễ hiểu.",
+      technologies: ["Physics", "Problem Solving", "Teaching", "Science"],
+    },
+    {
+      id: 5,
+      company: "Highlands Coffee",
+      position: "Nhân viên pha chế, phục vụ",
       duration: "2021 - 2022",
       description:
-        "Xây dựng các dự án cá nhân để học hỏi và phát triển kỹ năng. Tập trung vào UI/UX và responsive design.",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "GitHub"],
+        "Pha chế đồ uống, phục vụ khách hàng, đảm bảo chất lượng sản phẩm. Rèn luyện kỹ năng giao tiếp và xử lý tình huống.",
+      technologies: [
+        "Customer Service",
+        "Communication",
+        "Teamwork",
+        "Quality Control",
+      ],
     },
+    {
+      id: 6,
+      company: "Hỗ trợ bán hàng",
+      position: "Chăm sóc khách hàng",
+      duration: "2021 - 2022",
+      description:
+        "Hỗ trợ bán hàng online, chăm sóc khách hàng, xử lý đơn hàng và phản hồi thắc mắc. Phát triển kỹ năng bán hàng và CSKH.",
+      technologies: [
+        "Sales",
+        "Customer Care",
+        "Communication",
+        "Problem Solving",
+      ],
+    },
+    {
+      id: 7,
+      company: "Freelancer",
+      position: "Viết nội dung & Chỉnh sửa media",
+      duration: "2021 - 2022",
+      description:
+        "Viết nội dung cho website, blog và mạng xã hội. Chỉnh sửa video, hình ảnh và thiết kế đồ họa cho khách hàng.",
+      technologies: [
+        "Content Writing",
+        "Video Editing",
+        "Photo Editing",
+        "Graphic Design",
+      ],
+    },
+   
   ],
   education: [
     {
