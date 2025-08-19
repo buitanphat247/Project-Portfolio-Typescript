@@ -56,14 +56,14 @@ const About: React.FC<AboutProps> = ({ bio, personalInfo }) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center p-4 bg-gray-700 rounded-lg border border-purple-500/20">
                   <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{stat.value}</div>
                   <div className="text-sm text-gray-300">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Image and Interests */}
