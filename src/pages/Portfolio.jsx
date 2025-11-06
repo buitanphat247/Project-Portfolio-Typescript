@@ -9,7 +9,7 @@ import FloatingSocialLinks from '../components/Portfolio/FloatingSocialLinks';
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A192F]">
       <Header />
       <main>
         <Home />
