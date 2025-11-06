@@ -11,9 +11,9 @@ import Achievements from "./components/Achievements";
 import SplashScreen from "./components/Portfolio/SplashScreen";
 
 const App = () => {
-  // Initialize from localStorage - chỉ hiển thị splash nếu chưa từng xem
+  // Initialize from sessionStorage - chỉ hiển thị splash nếu chưa xem trong session này
   const [showSplash, setShowSplash] = useState(() => {
-    const hasSeenSplash = localStorage.getItem("showedSplashscreen");
+    const hasSeenSplash = sessionStorage.getItem("showedSplashscreen");
     return !JSON.parse(hasSeenSplash || "false");
   });
 
@@ -23,8 +23,8 @@ const App = () => {
     const timer = setTimeout(() => {
       // Update local state to trigger component rerender
       setShowSplash(false);
-      // Update localStorage for next time app is mounted
-      localStorage.setItem("showedSplashscreen", JSON.stringify(true));
+      // Update sessionStorage - sẽ bị xóa khi đóng tab
+      sessionStorage.setItem("showedSplashscreen", JSON.stringify(true));
     }, 2000); // splash 2s chỉ lần đầu
 
     return () => clearTimeout(timer);
