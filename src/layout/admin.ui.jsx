@@ -1,10 +1,19 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Icon from '../components/Icon';
 
 export default function AdminUI() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('adminLoggedIn');
+    sessionStorage.removeItem('adminUsername');
+    navigate('/admin/login');
+  };
+
+  const adminUsername = sessionStorage.getItem('adminUsername') || 'Admin';
 
   const menuItems = [
     { path: '/admin/skill-categories', label: 'Danh mục kỹ năng', icon: 'skills' },
@@ -12,9 +21,7 @@ export default function AdminUI() {
     { path: '/admin/projects', label: 'Dự án', icon: 'projects' },
     { path: '/admin/achievement-categories', label: 'Danh mục thành tích', icon: 'achievements' },
     { path: '/admin/achievements', label: 'Thành tích', icon: 'achievements' },
-    { path: '/admin/dashboard', label: 'Dashboard', icon: 'dashboard' },
-    { path: '/admin/admin', label: 'Người dùng', icon: 'users' },
-    { path: '/admin/settings', label: 'Cài đặt', icon: 'settings' },
+
   ];
 
   return (
@@ -74,11 +81,19 @@ export default function AdminUI() {
                 <button className="p-2 hover:bg-gray-100 rounded-full" aria-label="Notifications">
                   <Icon name="bell" />
                 </button>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-                    A
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                      {adminUsername.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-gray-700">{adminUsername}</span>
                   </div>
-                  <span className="text-gray-700">Admin</span>
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors duration-200 text-sm"
+                  >
+                    Đăng xuất
+                  </button>
                 </div>
               </div>
             </div>

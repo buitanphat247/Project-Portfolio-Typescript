@@ -63,30 +63,30 @@ export default function FloatingSocialLinks() {
   ];
 
   return (
-    <div className="fixed right-6 bottom-6 z-40 flex flex-col gap-4">
+    <div className="hidden sm:flex fixed right-3 sm:right-6 bottom-6 z-40 flex-col gap-3 sm:gap-4">
       {socialLinks.map((social, index) => (
         <a
           key={social.name}
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-12 h-12 ${social.bgColor} rounded-full flex items-center justify-center text-white transition-[transform,box-shadow] duration-150 ease-out cursor-pointer transform hover:scale-110 hover:shadow-lg will-change-transform`}
+          className={`w-10 h-10 sm:w-12 sm:h-12 ${social.bgColor} rounded-full flex items-center justify-center text-white transition-[transform,box-shadow] duration-150 ease-out cursor-pointer transform hover:scale-110 hover:shadow-lg will-change-transform`}
           aria-label={social.name}
           style={{
             animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`,
           }}
         >
-          <i className={`${social.icon} text-lg`}></i>
+          <i className={`${social.icon} text-base sm:text-lg`}></i>
         </a>
       ))}
       
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="w-12 h-12 bg-gradient-to-br from-green-400 to-cyan-500 hover:from-green-500 hover:to-cyan-600 rounded-full flex items-center justify-center text-white transition-[background,transform,box-shadow] duration-150 ease-out cursor-pointer transform hover:scale-110 hover:shadow-lg animate-fadeInUp will-change-transform"
+          className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-400 to-cyan-500 hover:from-green-500 hover:to-cyan-600 rounded-full flex items-center justify-center text-white transition-[background,transform,box-shadow] duration-150 ease-out cursor-pointer transform hover:scale-110 hover:shadow-lg animate-fadeInUp will-change-transform"
           aria-label="Scroll to top"
         >
-          <i className="fa-solid fa-arrow-up text-lg"></i>
+          <i className="fa-solid fa-arrow-up text-base sm:text-lg"></i>
         </button>
       )}
       

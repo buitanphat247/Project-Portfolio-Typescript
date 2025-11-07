@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AdminUI from "./layout/admin.ui";
 import Dashboard from "./components/Dashboard";
 import SkillCategories from "./components/SkillCategories";
@@ -9,6 +9,8 @@ import Projects from "./components/Projects";
 import AchievementCategories from "./components/AchievementCategories";
 import Achievements from "./components/Achievements";
 import SplashScreen from "./components/Portfolio/SplashScreen";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   // Initialize from sessionStorage - chỉ hiển thị splash nếu chưa xem trong session này
@@ -36,13 +38,22 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Portfolio />} />
-          <Route path="/admin" element={<AdminUI />}>
+          <Route path="/admin/login" element={<Login />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminUI />
+              </ProtectedRoute>
+            }
+          >
             <Route path="skill-categories" element={<SkillCategories />} />
             <Route path="skills" element={<Skills />} />
             <Route path="projects" element={<Projects />} />
             <Route path="achievement-categories" element={<AchievementCategories />} />
             <Route path="achievements" element={<Achievements />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="" element={<Navigate to="/admin/dashboard" replace />} />
           </Route>
         </Routes>
       </BrowserRouter>

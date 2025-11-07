@@ -142,6 +142,7 @@ export default function Projects() {
     { value: 'backend', label: 'Backend' },
     { value: 'fullstack', label: 'Fullstack' },
     { value: 'app', label: 'App/Tool' },
+    { value: 'docs', label: 'Docs' },
   ];
 
   return (

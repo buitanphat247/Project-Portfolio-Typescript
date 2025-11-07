@@ -57,54 +57,62 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
+    // Map từ tên field mới về state
+    const fieldMap = {
+      'contact-name': 'name',
+      'contact-email': 'email',
+      'contact-subject': 'subject',
+      'contact-message': 'message',
+    };
+    const stateKey = fieldMap[e.target.name] || e.target.name;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [stateKey]: e.target.value,
     });
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="min-h-screen py-20 bg-[#0A192F]">
+    <section id="contact" ref={sectionRef} className="min-h-screen py-12 sm:py-20 bg-[#0A192F]">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4">Liên Hệ</h2>
+        <div className={`text-center mb-8 sm:mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-400 mb-4">Liên Hệ</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-green-500 via-cyan-400 to-blue-500 mx-auto mb-4 rounded-full"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác trong dự án.</p>
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác trong dự án.</p>
         </div>
 
         {/* Contact Information Cards */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 transition-all duration-1000 ${
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "200ms" }}
         >
           {/* Email Card */}
-          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-6 text-center cursor-pointer">
-            <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="fa-solid fa-envelope text-cyan-400 text-2xl"></i>
+          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-4 sm:p-6 text-center cursor-pointer">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i className="fa-solid fa-envelope text-cyan-400 text-xl sm:text-2xl"></i>
             </div>
-            <h3 className="text-white font-semibold uppercase text-sm mb-2">Email</h3>
-            <a href={`mailto:${profileConfig.contact.email}`} className="text-gray-300 hover:text-cyan-400 transition-colors duration-150 ease-out cursor-pointer">
+            <h3 className="text-white font-semibold uppercase text-xs sm:text-sm mb-2">Email</h3>
+            <a href={`mailto:${profileConfig.contact.email}`} className="text-gray-300 hover:text-cyan-400 transition-colors duration-150 ease-out cursor-pointer text-xs sm:text-sm break-all">
               {profileConfig.contact.email}
             </a>
           </div>
 
           {/* Phone Card */}
-          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-6 text-center cursor-pointer">
-            <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i className="fa-solid fa-phone text-cyan-400 text-2xl"></i>
+          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-4 sm:p-6 text-center cursor-pointer">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i className="fa-solid fa-phone text-cyan-400 text-xl sm:text-2xl"></i>
             </div>
-            <h3 className="text-white font-semibold uppercase text-sm mb-2">Phone</h3>
-            <a href={`tel:${profileConfig.contact.phone}`} className="text-gray-300 hover:text-cyan-400 transition-colors duration-150 ease-out cursor-pointer">
+            <h3 className="text-white font-semibold uppercase text-xs sm:text-sm mb-2">Phone</h3>
+            <a href={`tel:${profileConfig.contact.phone}`} className="text-gray-300 hover:text-cyan-400 transition-colors duration-150 ease-out cursor-pointer text-xs sm:text-sm">
               {profileConfig.contact.phone}
             </a>
           </div>
 
           {/* Location Card */}
-          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-6 text-center cursor-pointer">
-            <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-gray-900 border-2 border-gray-800 rounded-xl p-4 sm:p-6 text-center cursor-pointer sm:col-span-2 md:col-span-1">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
               <i className="fa-solid fa-location-dot text-cyan-400 text-2xl"></i>
             </div>
             <h3 className="text-white font-semibold uppercase text-sm mb-2">Location</h3>
@@ -160,51 +168,71 @@ export default function Contact() {
           className={`max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           style={{ transitionDelay: "600ms" }}
         >
-          <h3 className="text-2xl font-bold text-white text-center mb-8">Gửi tin nhắn cho tôi</h3>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6 sm:mb-8">Gửi tin nhắn cho tôi</h3>
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" autoComplete="off" noValidate>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <input
                   type="text"
-                  name="name"
+                  name="contact-name"
+                  id="contact-name-field"
                   placeholder="Tên của bạn"
                   value={formData.name}
                   onChange={handleChange}
+                  autoComplete="chrome-off"
+                  data-lpignore="true"
+                  data-form-type="other"
                   required
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 placeholder-gray-500 transition-[border-color] duration-150 ease-out hover:border-cyan-500/50"
+                  style={{ color: '#ffffff' }}
                 />
               </div>
               <div>
                 <input
                   type="email"
-                  name="email"
+                  name="contact-email"
+                  id="contact-email-field"
                   placeholder="Email của bạn"
                   value={formData.email}
                   onChange={handleChange}
+                  autoComplete="chrome-off"
+                  data-lpignore="true"
+                  data-form-type="other"
                   required
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 placeholder-gray-500 transition-[border-color] duration-150 ease-out hover:border-cyan-500/50"
+                  style={{ color: '#ffffff' }}
                 />
               </div>
             </div>
             <div>
               <input
                 type="text"
-                name="subject"
+                name="contact-subject"
+                id="contact-subject-field"
                 placeholder="Chủ đề"
                 value={formData.subject}
                 onChange={handleChange}
+                autoComplete="chrome-off"
+                data-lpignore="true"
+                data-form-type="other"
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 placeholder-gray-500 transition-all duration-300 hover:border-cyan-500/50"
+                style={{ color: '#ffffff' }}
               />
             </div>
             <div>
               <textarea
-                name="message"
+                name="contact-message"
+                id="contact-message-field"
                 placeholder="Tin nhắn của bạn"
                 rows="6"
                 value={formData.message}
                 onChange={handleChange}
+                autoComplete="chrome-off"
+                data-lpignore="true"
+                data-form-type="other"
                 required
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 placeholder-gray-500 transition-all duration-300 hover:border-cyan-500/50 resize-none"
+                style={{ color: '#ffffff' }}
               ></textarea>
             </div>
             <button

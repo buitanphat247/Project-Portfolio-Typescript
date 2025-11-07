@@ -83,23 +83,23 @@ export default function Achievements() {
 
   if (loading) {
     return (
-      <section id="achievements" ref={sectionRef} className="py-20 bg-gray-950">
+      <section id="achievements" ref={sectionRef} className="py-12 sm:py-20 bg-gray-950">
         <div className="container mx-auto px-4">
           <div
-            className={`flex items-center justify-center gap-4 mb-16 transition-all duration-1000 ${
+            className={`flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
             }`}
           >
             <div className="relative group cursor-pointer">
-              <div className="px-8 py-4 flex items-center gap-3">
-                <i className="fa-solid fa-trophy text-white text-xl"></i>
-                <span className="text-white font-bold text-2xl tracking-wide">Thành tích</span>
+              <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+                <i className="fa-solid fa-trophy text-white text-lg sm:text-xl"></i>
+                <span className="text-white font-bold text-xl sm:text-2xl tracking-wide">Thành tích</span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-cyan-400 to-blue-500 rounded-full opacity-80 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
             </div>
           </div>
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {[...Array(6)].map((_, i) => (
                 <SkeletonCard key={i} />
               ))}
@@ -112,27 +112,27 @@ export default function Achievements() {
 
   if (error) {
     return (
-      <section id="achievements" ref={sectionRef} className="py-20 bg-gray-950 flex items-center justify-center">
+      <section id="achievements" ref={sectionRef} className="py-12 sm:py-20 bg-gray-950 flex items-center justify-center">
         <div className="container mx-auto px-4">
-          <p className="text-center text-red-400 text-xl">{error}</p>
+          <p className="text-center text-red-400 text-base sm:text-xl">{error}</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="achievements" ref={sectionRef} className="py-20 bg-gray-950">
+    <section id="achievements" ref={sectionRef} className="py-12 sm:py-20 bg-gray-950">
       <div className="container mx-auto px-4">
         {/* Title */}
         <div
-          className={`flex items-center justify-center gap-4 mb-16 transition-all duration-1000 ${
+          className={`flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
           }`}
         >
           <div className="relative group cursor-pointer">
-            <div className="px-8 py-4 flex items-center gap-3">
-              <i className="fa-solid fa-trophy text-white text-xl"></i>
-              <span className="text-white font-bold text-2xl tracking-wide">Thành Tích</span>
+            <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+              <i className="fa-solid fa-trophy text-white text-lg sm:text-xl"></i>
+              <span className="text-white font-bold text-xl sm:text-2xl tracking-wide">Thành Tích</span>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-cyan-400 to-blue-500 rounded-full opacity-80 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
           </div>
@@ -143,7 +143,7 @@ export default function Achievements() {
           {achievements.length === 0 ? (
             <p className="text-center text-gray-400 text-xl">Chưa có thành tích nào</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {achievements.map((achievement, index) => {
                 const categoryName = getCategoryName(achievement.categoryId || achievement.category);
                 return (

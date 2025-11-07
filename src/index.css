@@ -13,3 +13,50 @@
   animation: spin-slow 1.5s linear infinite;
 }
 
+html {
+  /* Ẩn scrollbar nhưng vẫn scroll được */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  /* Ẩn scrollbar nhưng vẫn scroll được */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Ẩn scrollbar cho Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ẩn scrollbar cho tất cả các phần tử */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Fix modal scrollbar issue */
+.project-modal-wrapper .ant-modal-wrap {
+  overflow: hidden !important;
+}
+
+.project-modal-wrapper .ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Hide scrollbar when modal is open */
+body.ant-scrolling-effect {
+  overflow: hidden !important;
+  padding-right: 0 !important;
+}

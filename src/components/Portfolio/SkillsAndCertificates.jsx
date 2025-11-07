@@ -156,13 +156,13 @@ export default function SkillsAndCertificates() {
 
   if (loading) {
     return (
-      <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-20">
+      <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-12 sm:py-20">
         <div className="container mx-auto px-4">
           {/* Tab Navigation Skeleton */}
           <SkeletonTitle />
           <div className="max-w-7xl mx-auto">
             {/* Skills Skeleton */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {[...Array(4)].map((_, i) => (
                 <SkeletonCard key={i} />
               ))}
@@ -175,21 +175,21 @@ export default function SkillsAndCertificates() {
 
   if (error) {
     return (
-      <section id="skills" className="min-h-screen bg-gray-950 flex items-center justify-center py-20">
+      <section id="skills" className="min-h-screen bg-gray-950 flex items-center justify-center py-12 sm:py-20">
         <div className="container mx-auto px-4">
-          <p className="text-center text-red-400 text-xl">{error}</p>
+          <p className="text-center text-red-400 text-base sm:text-xl">{error}</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-20">
+    <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-12 sm:py-20">
       <div className="container mx-auto px-4">
         {/* Tab Navigation */}
         <div
           ref={tabContainerRef}
-          className={`relative flex items-center justify-center gap-8 mb-16 transition-all duration-1000 ${
+          className={`relative flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
           }`}
         >
@@ -205,9 +205,9 @@ export default function SkillsAndCertificates() {
             }}
             className="relative group cursor-pointer"
           >
-            <div className="px-8 py-4 flex items-center gap-3">
-              <i className="fa-solid fa-code text-white text-xl"></i>
-              <span className="text-white font-bold text-2xl tracking-wide">Skills</span>
+            <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+              <i className="fa-solid fa-code text-white text-lg sm:text-xl"></i>
+              <span className="text-white font-bold text-lg sm:text-xl md:text-2xl tracking-wide">Skills</span>
             </div>
           </button>
 
@@ -223,9 +223,9 @@ export default function SkillsAndCertificates() {
             }}
             className="relative group cursor-pointer"
           >
-            <div className="px-8 py-4 flex items-center gap-3">
-              <i className="fa-solid fa-certificate text-white text-xl"></i>
-              <span className="text-white font-bold text-2xl tracking-wide">Certificate</span>
+            <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+              <i className="fa-solid fa-certificate text-white text-lg sm:text-xl"></i>
+              <span className="text-white font-bold text-lg sm:text-xl md:text-2xl tracking-wide">Certificate</span>
             </div>
           </button>
 
@@ -245,9 +245,9 @@ export default function SkillsAndCertificates() {
           {activeTab === "skills" && (
             <div className="transition-all duration-500">
               {categories.length === 0 ? (
-                <p className="text-center text-gray-400 text-xl">Chưa có danh mục kỹ năng nào</p>
+                <p className="text-center text-gray-400 text-base sm:text-xl">Chưa có danh mục kỹ năng nào</p>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                   {categories.map((category, index) => {
                     const categoryData = skillsByCategory[category.id];
                     const skills = categoryData?.skills || [];
@@ -299,7 +299,7 @@ export default function SkillsAndCertificates() {
           {/* Certificates Tab */}
           {activeTab === "certificates" && (
             <div className="transition-all duration-700">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
                   <div
                     key={item}
