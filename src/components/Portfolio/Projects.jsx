@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Modal } from "antd";
 import { projectsApi } from "../../api/projects.api";
+import LazyImage from "../LazyImage";
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -299,19 +300,19 @@ export default function Projects() {
                   {/* Project Image/Banner */}
                   <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
                     {project.imageUrl ? (
-                      <img
+                      <LazyImage
                         src={project.imageUrl}
                         alt={project.title}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           e.target.style.display = "none";
-                          e.target.nextElementSibling.style.display = "flex";
                         }}
                       />
-                    ) : null}
-                    <div className={`w-full h-full flex items-center justify-center ${project.imageUrl ? "hidden" : ""}`}>
-                      <i className="fa-solid fa-image text-gray-600 text-4xl"></i>
-                    </div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <i className="fa-solid fa-image text-gray-600 text-4xl"></i>
+                      </div>
+                    )}
                   </div>
 
                   {/* Project Info */}
@@ -405,18 +406,14 @@ export default function Projects() {
             {/* Ảnh đại diện */}
             {selectedProject.imageUrl && (
               <div className="w-full h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg overflow-hidden mb-6">
-                <img
+                <LazyImage
                   src={selectedProject.imageUrl}
                   alt={selectedProject.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.style.display = "none";
-                    e.target.nextElementSibling.style.display = "flex";
                   }}
                 />
-                <div className="w-full h-full hidden items-center justify-center">
-                  <i className="fa-solid fa-image text-gray-600 text-6xl"></i>
-                </div>
               </div>
             )}
 

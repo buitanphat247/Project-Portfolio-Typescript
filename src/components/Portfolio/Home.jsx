@@ -1,5 +1,6 @@
 import TypingEffect from './TypingEffect';
 import { profileConfig } from '../../config/profile.config';
+import LazyImage from '../LazyImage';
 
 export default function Home() {
   return (
@@ -96,13 +97,13 @@ export default function Home() {
               {/* Main avatar container */}
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full p-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_50px_rgba(34,211,238,0.6)]">
                 <div className="w-full h-full rounded-full bg-black overflow-hidden relative">
-                  <img
+                  <LazyImage
                     src="/avatar.jpg"
                     alt="Bùi Tấn Phát"
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110 rounded-full"
                   />
                   {/* Subtle overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 transition-all duration-500 rounded-full"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-transparent to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 transition-all duration-500 rounded-full pointer-events-none"></div>
                 </div>
               </div>
               
