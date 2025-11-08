@@ -11,6 +11,8 @@ import Achievements from "./components/Achievements";
 import SplashScreen from "./components/Portfolio/SplashScreen";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ExportData from "./components/ExportData";
+import ImportData from "./components/ImportData";
 
 const App = () => {
   // Initialize from sessionStorage - chỉ hiển thị splash nếu chưa xem trong session này
@@ -53,6 +55,8 @@ const App = () => {
             <Route path="achievement-categories" element={<AchievementCategories />} />
             <Route path="achievements" element={<Achievements />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="export" element={<ExportData />} />
+            <Route path="import" element={<ImportData />} />
             <Route path="" element={<Navigate to="/admin/dashboard" replace />} />
           </Route>
         </Routes>

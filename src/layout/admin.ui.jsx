@@ -21,7 +21,8 @@ export default function AdminUI() {
     { path: '/admin/projects', label: 'Dự án', icon: 'projects' },
     { path: '/admin/achievement-categories', label: 'Danh mục thành tích', icon: 'achievements' },
     { path: '/admin/achievements', label: 'Thành tích', icon: 'achievements' },
-
+    { path: '/admin/export', label: 'Export Database', icon: 'download' },
+    { path: '/admin/import', label: 'Import Database', icon: 'upload' },
   ];
 
   return (

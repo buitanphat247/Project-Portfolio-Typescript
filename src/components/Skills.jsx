@@ -82,16 +82,33 @@ export default function Skills() {
       setLoading(true);
       setError(null);
       if (isEditing) {
+        // Cập nhật skill
         await skillsApi.update(form.id, { name: form.name, iconHtml: form.iconHtml, categoryId: form.categoryId });
+        // Cập nhật item trong danh sách hiện tại mà không reset pagination
+        setSkills((prev) =>
+          prev.map((skill) =>
+            skill.id === form.id
+              ? { ...skill, name: form.name, iconHtml: form.iconHtml, categoryId: form.categoryId }
+              : skill
+          )
+        );
+        setIsEditing(false);
+        resetForm();
       } else {
+        // Thêm mới skill
         await skillsApi.create({ name: form.name, iconHtml: form.iconHtml, categoryId: form.categoryId });
+        // Nếu đang filter theo category và category mới khác với category đang filter, không cần reload
+        // Nếu không filter hoặc category trùng, reload lại từ đầu
+        if (!selectedCategory || form.categoryId === selectedCategory) {
+          setPage(1);
+          setLastDoc(null);
+          setHasMore(true);
+          await fetchSkills(true);
+        } else {
+          // Chỉ reset form, không reload
+          resetForm();
+        }
       }
-      setIsEditing(false);
-      resetForm();
-      setPage(1);
-      setLastDoc(null);
-      setHasMore(true);
-      await fetchSkills(true);
     } catch (err) {
       setError(isEditing ? 'Không thể cập nhật. Vui lòng thử lại.' : 'Không thể thêm mới. Vui lòng thử lại.');
       console.error(err);

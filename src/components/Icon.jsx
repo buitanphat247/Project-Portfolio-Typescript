@@ -12,6 +12,8 @@ const NAME_TO_CLASS = {
   bell: 'fa-solid fa-bell',
   chevronLeft: 'fa-solid fa-chevron-left',
   chevronRight: 'fa-solid fa-chevron-right',
+  download: 'fa-solid fa-download',
+  upload: 'fa-solid fa-upload',
 };
 
 export default function Icon({ name, className = '' }) {

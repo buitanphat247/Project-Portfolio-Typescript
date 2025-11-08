@@ -184,7 +184,7 @@ export default function SkillsAndCertificates() {
   }
 
   return (
-    <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-12 sm:py-20">
+    <section id="skills" ref={sectionRef} className="min-h-screen bg-gray-950 py-8">
       <div className="container mx-auto px-4">
         {/* Tab Navigation */}
         <div
